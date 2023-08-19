@@ -34,14 +34,14 @@ public class PropietarioRepositoryImpl implements IPropietarioRepository{
 
     @Override
     @Transactional(value = TxType.MANDATORY)
-    public void eliminar(String id) {
+    public void eliminar(Integer id) {
         Propietario prop = this.seleccionarPorId(id);
         this.entityManager.remove(prop);
     }
 
     @Override
     @Transactional(value =TxType.NOT_SUPPORTED)
-    public Propietario seleccionarPorId(String id) {
+    public Propietario seleccionarPorId(Integer id) {
         return this.entityManager.find(Propietario.class, id);
     }
 

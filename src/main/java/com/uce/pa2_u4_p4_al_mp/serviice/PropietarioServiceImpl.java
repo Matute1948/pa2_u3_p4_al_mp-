@@ -3,6 +3,9 @@ package com.uce.pa2_u4_p4_al_mp.serviice;
 import com.uce.pa2_u4_p4_al_mp.repository.IPropietarioRepository;
 import com.uce.pa2_u4_p4_al_mp.repository.modelo.Propietario;
 
+import jakarta.transaction.Transactional;
+import jakarta.transaction.Transactional.TxType;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,17 +32,18 @@ public class PropietarioServiceImpl implements IPropietarioService{
     }
 
     @Override
+    @Transactional(value = TxType.REQUIRED)
     public void actulizar(Propietario propietario) {
         this.propietarioRepository.actulizar(propietario);
     }
 
     @Override
-    public void remover(String id) {
+    public void remover(Integer id) {
         this.propietarioRepository.eliminar(id);
     }
 
     @Override
-    public Propietario buscarPorId(String id) {
+    public Propietario buscarPorId(Integer id) {
         return this.propietarioRepository.seleccionarPorId(id);
     }
 
