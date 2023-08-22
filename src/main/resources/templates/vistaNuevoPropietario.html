@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"><!--permite trabajar con un for each-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form th:action ="@{/propietarios/guardar}" th:object ="${propietario}" th:method="POST">
+        <table>
+            <tr>
+                <td><label>Nombre:</label></td>
+                <td><input type="text" th:field="${propietario.nombre}"></input></td>
+            </tr>
+            <tr>
+                <td><label>Apellido:</label></td>
+                <td><input type="text" th:field="${propietario.apellido}"></input></td>
+            </tr>
+            <tr>
+                <td><label>Cedula:</label></td>
+                <td><input type="text" th:field="${propietario.cedula}"></input></td>
+            </tr>
+        </table>
+        <input type="submit" value = "Guardar"></input>
+    </form>
+</body>
+</html>

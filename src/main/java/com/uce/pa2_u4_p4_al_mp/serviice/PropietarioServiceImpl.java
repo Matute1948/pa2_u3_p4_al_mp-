@@ -18,7 +18,7 @@ public class PropietarioServiceImpl implements IPropietarioService{
     private IPropietarioRepository propietarioRepository;
 
     @Override
-    //@Transactional //transaccion abierta
+    @Transactional(value = TxType.REQUIRED)
     public void agregar(Propietario propietario) {
         System.out.println("service"+TransactionSynchronizationManager.isActualTransactionActive());
         this.propietarioRepository.insertar(propietario);
@@ -38,16 +38,19 @@ public class PropietarioServiceImpl implements IPropietarioService{
     }
 
     @Override
+    @Transactional(value = TxType.REQUIRED)
     public void remover(Integer id) {
         this.propietarioRepository.eliminar(id);
     }
 
     @Override
+    @Transactional(value = TxType.REQUIRED)
     public Propietario buscarPorId(Integer id) {
         return this.propietarioRepository.seleccionarPorId(id);
     }
 
     @Override
+    @Transactional(value = TxType.REQUIRED)
     public List<Propietario> buscarTodos() {
         return this.propietarioRepository.seleccionarTodos();
     }
